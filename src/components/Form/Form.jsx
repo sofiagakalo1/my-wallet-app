@@ -4,8 +4,8 @@ const Form = () => {
   return (
     <Main>
       <FormWrapper>
-        <Input placeholder="Enter the wallet's address..." />
-        <Input placeholder="Enter the amount..." />
+        <Input placeholder="wallet's address..." />
+        <Input placeholder="the amount..." />
         <Button>Submit</Button>
       </FormWrapper>
     </Main>

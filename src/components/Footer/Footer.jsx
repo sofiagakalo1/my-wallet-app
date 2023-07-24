@@ -5,7 +5,11 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <p>Repository &#8594;</p>
-      <Button href="https://github.com/sofiagakalo1/my-wallet-app">
+      <Button
+        href="https://github.com/sofiagakalo1/my-wallet-app"
+        target="blank"
+        rel="noopener noreferrer nofollow"
+      >
         <img src={GithubLogo} alt="Github logo" />
       </Button>
     </FooterWrapper>
