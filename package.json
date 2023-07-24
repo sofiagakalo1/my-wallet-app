@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://sofiagakalo1.github.io/my-wallet-app",
+  "homepage": "https://sofiagakalo1.github.io/my-wallet-app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
