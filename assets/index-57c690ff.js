@@ -65,7 +65,7 @@ Error generating stack: `+o.message+`
     background-color: black;
     color: white;
   }
-`,Cm="/assets/logo-aea65663.svg",_m=()=>he.jsxs(km,{children:[he.jsx(xm,{src:Cm,alt:"Logo"}),he.jsx(Em,{children:"Connect wallet"})]}),Pm=It.main`
+`,Cm="/my-wallet-app/assets/logo-aea65663.svg",_m=()=>he.jsxs(km,{children:[he.jsx(xm,{src:Cm,alt:"Logo"}),he.jsx(Em,{children:"Connect wallet"})]}),Pm=It.main`
   padding-top: 40px;
   padding-bottom: 40px;
   display: flex;
