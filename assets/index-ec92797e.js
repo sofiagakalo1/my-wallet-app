@@ -122,7 +122,7 @@ Error generating stack: `+o.message+`
   @media (max-width: 767px) {
     font-size: 16px;
   }
-`,Tm=()=>q.jsx(Pm,{children:q.jsxs(Nm,{children:[q.jsx(fa,{placeholder:"Enter the wallet's address..."}),q.jsx(fa,{placeholder:"Enter the amount..."}),q.jsx(zm,{children:"Submit"})]})}),Rm="/my-wallet-app/assets/github-c80c5ec0.png",Lm=qe.footer`
+`,Tm=()=>q.jsx(Pm,{children:q.jsxs(Nm,{children:[q.jsx(fa,{placeholder:"wallet's address..."}),q.jsx(fa,{placeholder:"the amount..."}),q.jsx(zm,{children:"Submit"})]})}),Rm="/my-wallet-app/assets/github-c80c5ec0.png",Lm=qe.footer`
 position:absolute;
 bottom:0;
 left:0;
@@ -137,4 +137,4 @@ padding:15px;
 width:100px;
 height:40px;
   }
-`,Im=()=>q.jsxs(Lm,{children:[q.jsx("p",{children:"Repository →"}),q.jsx($m,{href:"https://github.com/sofiagakalo1/my-wallet-app",children:q.jsx("img",{src:Rm,alt:"Github logo"})})]});function Om(){return q.jsxs(q.Fragment,{children:[q.jsx(_m,{}),q.jsx(Tm,{}),q.jsx(Im,{})]})}Ho.createRoot(document.getElementById("root")).render(q.jsx(xn.StrictMode,{children:q.jsx(Om,{})}));
+`,Im=()=>q.jsxs(Lm,{children:[q.jsx("p",{children:"Repository →"}),q.jsx($m,{href:"https://github.com/sofiagakalo1/my-wallet-app",target:"blank",rel:"noopener noreferrer nofollow",children:q.jsx("img",{src:Rm,alt:"Github logo"})})]});function Om(){return q.jsxs(q.Fragment,{children:[q.jsx(_m,{}),q.jsx(Tm,{}),q.jsx(Im,{})]})}Ho.createRoot(document.getElementById("root")).render(q.jsx(xn.StrictMode,{children:q.jsx(Om,{})}));
