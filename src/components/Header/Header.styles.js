@@ -14,7 +14,7 @@ export const Img = styled.img`
   height: 20px;
 `;
 
-export const Button = styled.button`
+export const ConnectButton = styled.button`
   cursor: pointer;
   padding: 15px 10px;
   border: 1px solid black;
@@ -28,4 +28,19 @@ export const Button = styled.button`
     background-color: black;
     color: white;
   }
+`;
+export const ConnectedButton= styled.button`
+cursor: pointer;
+padding: 15px 10px;
+border: 1px solid black;
+border-radius: 10px;
+font-size: 20px;
+background-color: transparent;
+transition: color 250ms ease, background-color 250ms ease;
+
+&:hover,
+&:focus {
+  background-color: black;
+  color: white;
+}
 `;
