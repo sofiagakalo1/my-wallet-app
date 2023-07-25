@@ -10,7 +10,7 @@ const Form = ({ onFormSubmit }) => {
     e.preventDefault();
 
     if (!tokenAmount || isNaN(parseFloat(tokenAmount))) {
-      console.error('Invalid token amount:', tokenAmount);
+      console.error("Invalid token amount:", tokenAmount);
       return;
     }
 

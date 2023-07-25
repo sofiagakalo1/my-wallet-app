@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
-import { Container, Img, ConnectButton, DataList } from "./Header.styles";
-import Logo from "../../assets/logo.svg";
+import {
+  Container,
+  LogoWrapper,
+  LogoSpan,
+  Img,
+  ConnectButton,
+  DataList,
+} from "./Header.styles";
+import Logo from "../../../public/wallet.svg";
 import Loader from "../Loader/Loader";
 
 const Header = ({ loading, walletAddress, walletBalance, connectWallet }) => {
@@ -20,7 +27,10 @@ const Header = ({ loading, walletAddress, walletBalance, connectWallet }) => {
 
   return (
     <Container>
-      <Img src={Logo} alt="Logo" />
+      <LogoWrapper>
+        <LogoSpan>My wallet</LogoSpan>
+        <Img src={Logo} alt="Logo" />
+      </LogoWrapper>
       <ConnectButton onClick={() => connectWallet()}>
         {buttonLabel}
       </ConnectButton>

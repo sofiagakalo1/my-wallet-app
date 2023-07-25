@@ -9,11 +9,19 @@ export const Container = styled.header`
   align-items: center;
   padding: 40px 20px;
 `;
-export const Img = styled.img`
-  width: 80px;
-  height: 20px;
+export const LogoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
 `;
-
+export const LogoSpan = styled.span`
+  font-size: x-large;
+`;
+export const Img = styled.img`
+  width: 30px;
+  height: 30px;
+`;
 export const ConnectButton = styled.button`
   cursor: pointer;
   padding: 15px 10px;

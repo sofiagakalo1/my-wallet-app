@@ -24,16 +24,17 @@ function App() {
         await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+
         const provider = new ethers.BrowserProvider(window.ethereum);
+
         const [address] = await provider.send("eth_requestAccounts", []);
         const formattedAddress = formatAddress(address);
         setWalletAddress(formattedAddress);
-        // console.log("Wallet Address:", address);
+
         const weiAmount = await provider.getBalance(address);
-        // console.log("Balance (Wei):", weiAmount.toString());
+
         const etherAmount = ethers.formatUnits(weiAmount, 18);
         const formattedBalance = parseFloat(etherAmount).toFixed(3);
-        // console.log("Balance (Ether):", formattedBalance);
         setWalletBalance(formattedBalance);
       } catch (error) {
         console.error(
@@ -49,26 +50,22 @@ function App() {
   };
 
   const sendEthereum = async (receiverAddress, tokenAmount) => {
-    console.log("receiverAddress:", receiverAddress);
-    console.log("tokenAmount",tokenAmount);
     try {
-      const tx = await window.ethereum.request({
+      await window.ethereum.request({
         method: "eth_sendTransaction",
         params: [
           {
-            from: walletAddress, 
+            from: walletAddress,
             to: receiverAddress,
             value: ethers.parseEther(tokenAmount),
           },
         ],
       });
-
-      console.log("Transaction hash:", tx);
     } catch (error) {
       console.error("Error sending Ethereum:", error);
     }
   };
-  
+
   return (
     <>
       <Header
@@ -77,9 +74,7 @@ function App() {
         walletBalance={walletBalance}
         connectWallet={connectWallet}
       />
-      <Form
-        onFormSubmit={sendEthereum}
-      />
+      <Form onFormSubmit={sendEthereum} />
       <Footer />
     </>
   );
