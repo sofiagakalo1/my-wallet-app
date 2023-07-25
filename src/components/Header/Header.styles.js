@@ -29,18 +29,8 @@ export const ConnectButton = styled.button`
     color: white;
   }
 `;
-export const ConnectedButton= styled.button`
-cursor: pointer;
-padding: 15px 10px;
-border: 1px solid black;
-border-radius: 10px;
-font-size: 20px;
-background-color: transparent;
-transition: color 250ms ease, background-color 250ms ease;
-
-&:hover,
-&:focus {
-  background-color: black;
-  color: white;
-}
+export const DataList = styled.ul`
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
 `;
