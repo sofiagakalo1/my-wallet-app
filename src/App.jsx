@@ -58,24 +58,19 @@ function App() {
     console.log("receiverAddress",receiverAddress);
     console.log("tokenAmount",tokenAmount);
 
+    const weiValue = ethers.parseEther(tokenAmount);
+    const hexValue = weiValue.toString(16);
+
     window.ethereum
       .request({
         method: "eth_sendTransaction",
-        // params: [
-        //   {
-        //     from: fullWalletAddress,
-        //     to: receiverAddress,
-        //     value: ethers.parseEther(tokenAmount),
-        //   },
-        // ],
         params: [
           {
             from: fullWalletAddress,
             to: receiverAddress,
-            value: tokenAmount,
+            value: hexValue,
           },
         ],
-        
       })
       .then((result) => {
         console.log("result", result);
