@@ -15,8 +15,8 @@ const Form = ({ onFormSubmit }) => {
     }
 
     onFormSubmit(receiverAddress, tokenAmount);
-    setReceiverAddress("");
-    setTokenAmount("");
+    // setReceiverAddress("");
+    // setTokenAmount("");
   };
 
   return (

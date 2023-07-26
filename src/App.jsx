@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [walletAddress, setWalletAddress] = useState();
+  const [fullWalletAddress, setFullWalletAddress]=useState();
   const [walletBalance, setWalletBalance] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -30,6 +31,7 @@ function App() {
         const [address] = await provider.send("eth_requestAccounts", []);
         const formattedAddress = formatAddress(address);
         setWalletAddress(formattedAddress);
+        setFullWalletAddress(address);
 
         const weiAmount = await provider.getBalance(address);
 
@@ -50,20 +52,37 @@ function App() {
   };
 
   const sendEthereum = async (receiverAddress, tokenAmount) => {
-    try {
-      await window.ethereum.request({
+    console.log("sendEthereum");
+    console.log("walletAddress",walletAddress);
+    console.log("fullWalletAddress",fullWalletAddress);
+    console.log("receiverAddress",receiverAddress);
+    console.log("tokenAmount",tokenAmount);
+
+    window.ethereum
+      .request({
         method: "eth_sendTransaction",
+        // params: [
+        //   {
+        //     from: fullWalletAddress,
+        //     to: receiverAddress,
+        //     value: ethers.parseEther(tokenAmount),
+        //   },
+        // ],
         params: [
           {
-            from: walletAddress,
+            from: fullWalletAddress,
             to: receiverAddress,
-            value: ethers.parseEther(tokenAmount),
+            value: tokenAmount,
           },
         ],
+        
+      })
+      .then((result) => {
+        console.log("result", result);
+      })
+      .catch((error) => {
+        console.log("error", error);
       });
-    } catch (error) {
-      console.error("Error sending Ethereum:", error);
-    }
   };
 
   return (
