@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ethers } from "ethers";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
@@ -7,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [walletAddress, setWalletAddress] = useState();
-  const [fullWalletAddress, setFullWalletAddress]=useState();
+  const [fullWalletAddress, setFullWalletAddress] = useState();
   const [walletBalance, setWalletBalance] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -39,25 +41,16 @@ function App() {
         const formattedBalance = parseFloat(etherAmount).toFixed(3);
         setWalletBalance(formattedBalance);
       } catch (error) {
-        console.error(
-          "User denied account access or other error occurred:",
-          error
-        );
+        toast.error("User denied account access or other error occurred");
       } finally {
         setLoading(false);
       }
     } else {
-      console.error("MetaMask not detected");
+      toast.error("MetaMask not detected");
     }
   };
 
   const sendEthereum = async (receiverAddress, tokenAmount) => {
-    console.log("sendEthereum");
-    console.log("walletAddress",walletAddress);
-    console.log("fullWalletAddress",fullWalletAddress);
-    console.log("receiverAddress",receiverAddress);
-    console.log("tokenAmount",tokenAmount);
-
     const weiValue = ethers.parseEther(tokenAmount);
     const hexValue = weiValue.toString(16);
 
@@ -76,7 +69,7 @@ function App() {
         console.log("result", result);
       })
       .catch((error) => {
-        console.log("error", error);
+        toast.error(error.message);
       });
   };
 
@@ -90,6 +83,18 @@ function App() {
       />
       <Form onFormSubmit={sendEthereum} />
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
