@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import detectEthereumProvider from '@metamask/detect-provider';
 
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
@@ -20,11 +21,20 @@ function App() {
     if (window.ethereum) {
       try {
         setConnectLoading(true);
-
-        await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-
+        if (window.ethereum.isMetaMask) {
+          await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+        } else {
+          const provider = await detectEthereumProvider();
+          if (provider) {
+            await provider.request({
+              method: "eth_requestAccounts",
+            });
+          } else {
+            return toast.error("MetaMask not detected");
+          }
+        }
         const provider = new ethers.BrowserProvider(window.ethereum);
 
         const [address] = await provider.send("eth_requestAccounts", []);
@@ -46,7 +56,7 @@ function App() {
       toast.error("MetaMask not detected");
     }
   };
-  
+
   const sendEthereum = async (receiverAddress, tokenAmount) => {
     try {
       setSendLoading(true);
