@@ -1,4 +1,4 @@
-# ![icon](./public/wallet.svg) My wallet app
+# <img src="./public/wallet.svg" width="30" height="30"> My Wallet App
 
 <h2>The application was developed to allow the user to connect their wallet, check their account balance and wallet address, as well as perform a token transfer from the connected wallet to another address on the Ethereum Goerli network.</h2>
 
