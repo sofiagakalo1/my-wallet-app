@@ -14,13 +14,23 @@ export const LogoWrapper = styled.div`
   flex-direction: row;
   gap: 15px;
   align-items: center;
+  @media (max-width: 767px) {
+    gap: 5px;
+  }
 `;
 export const LogoSpan = styled.span`
   font-size: x-large;
+  @media (max-width: 767px) {
+    font-size: medium;
+  }
 `;
 export const Img = styled.img`
   width: 30px;
   height: 30px;
+  @media (max-width: 767px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 export const ConnectButton = styled.button`
   cursor: pointer;
@@ -36,9 +46,17 @@ export const ConnectButton = styled.button`
     background-color: black;
     color: white;
   }
+
+  @media (max-width: 767px) {
+    padding: 10px 5px;
+    font-size: 14px;
+  }
 `;
 export const DataList = styled.ul`
   display: flex;
   flex-direction: row;
   gap: 25px;
+  @media (max-width: 767px) {
+    gap: 15px;
+  }
 `;
