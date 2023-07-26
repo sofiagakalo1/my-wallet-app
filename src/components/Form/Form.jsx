@@ -4,9 +4,10 @@ import {
   isValidEthereumAddress,
   isValidTokenAmount,
 } from "../../utils/formatFunctions";
+import Loader from "../Loader/Loader";
 import { Main, FormWrapper, Input, Button } from "./Form.styles";
 
-const Form = ({ onFormSubmit }) => {
+const Form = ({ onFormSubmit, loading }) => {
   const [receiverAddress, setReceiverAddress] = useState("");
   const [tokenAmount, setTokenAmount] = useState("");
 
@@ -35,7 +36,7 @@ const Form = ({ onFormSubmit }) => {
           onChange={(e) => setTokenAmount(e.target.value)}
           placeholder="Token amount..."
         />
-        <Button type="submit">Send</Button>
+        <Button type="submit">{loading ? <Loader /> : "Send"}</Button>
       </FormWrapper>
     </Main>
   );
@@ -43,6 +44,7 @@ const Form = ({ onFormSubmit }) => {
 
 Form.propTypes = {
   onFormSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Form;

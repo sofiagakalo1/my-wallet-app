@@ -13,12 +13,13 @@ function App() {
   const [walletAddress, setWalletAddress] = useState();
   const [fullWalletAddress, setFullWalletAddress] = useState();
   const [walletBalance, setWalletBalance] = useState();
-  const [loading, setLoading] = useState(false);
+  const [connectLoading, setConnectLoading] = useState(false);
+  const [sendLoading, setSendLoading] = useState(false);
 
   const connectWallet = async () => {
     if (window.ethereum) {
       try {
-        setLoading(true);
+        setConnectLoading(true);
 
         await window.ethereum.request({
           method: "eth_requestAccounts",
@@ -39,19 +40,20 @@ function App() {
       } catch (error) {
         toast.error("User denied account access or other error occurred");
       } finally {
-        setLoading(false);
+        setConnectLoading(false);
       }
     } else {
       toast.error("MetaMask not detected");
     }
   };
-
+  
   const sendEthereum = async (receiverAddress, tokenAmount) => {
-    const weiValue = ethers.parseEther(tokenAmount);
-    const hexValue = weiValue.toString(16);
+    try {
+      setSendLoading(true);
+      const weiValue = ethers.parseEther(tokenAmount);
+      const hexValue = weiValue.toString(16);
 
-    window.ethereum
-      .request({
+      await window.ethereum.request({
         method: "eth_sendTransaction",
         params: [
           {
@@ -60,21 +62,23 @@ function App() {
             value: hexValue,
           },
         ],
-      })
-      .catch((error) => {
-        toast.error(error.message);
       });
+    } catch (error) {
+      toast.error(error.message);
+    }finally{
+      setSendLoading(false);
+    }
   };
 
   return (
     <>
       <Header
-        loading={loading}
+        loading={connectLoading}
         walletAddress={walletAddress}
         walletBalance={walletBalance}
         connectWallet={connectWallet}
       />
-      <Form onFormSubmit={sendEthereum} />
+      <Form onFormSubmit={sendEthereum} loading={sendLoading} />
       <Footer />
       <ToastContainer
         position="top-right"
