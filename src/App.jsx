@@ -1,23 +1,19 @@
 import { useState } from "react";
 import { ethers } from "ethers";
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import Footer from "./components/Footer/Footer";
+
+import { formatAddress } from "./utils/formatFunctions";
 
 function App() {
   const [walletAddress, setWalletAddress] = useState();
   const [fullWalletAddress, setFullWalletAddress] = useState();
   const [walletBalance, setWalletBalance] = useState();
   const [loading, setLoading] = useState(false);
-
-  const formatAddress = (address) => {
-    const start = address.slice(0, 4);
-    const end = address.slice(-4);
-    return `${start}...${end}`;
-  };
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -64,9 +60,6 @@ function App() {
             value: hexValue,
           },
         ],
-      })
-      .then((result) => {
-        console.log("result", result);
       })
       .catch((error) => {
         toast.error(error.message);
